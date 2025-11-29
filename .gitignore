@@ -40,10 +40,6 @@ Thumbs.db
 *.swo
 *~
 
-# Debug
-.vscode/launch.json
-.vscode/settings.json
-
 # Temporary files
 *.tmp
 *.temp
