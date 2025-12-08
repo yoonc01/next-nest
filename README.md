@@ -9,6 +9,8 @@ pnpm 워크스페이스를 사용한 Next.js + NestJS 모노레포 프로젝트�
 - [Next.js Route Handler의 `request`와 `params` 이해하기](https://github.com/yoonc01/next-nest/pull/1) - request 객체와 params의 차이, 내부 구현 원리
 - [Server Actions vs API Routes 완벽 가이드](https://github.com/yoonc01/next-nest/pull/2) - RPC vs REST, Progressive Enhancement, Form의 가치, 선택 기준
 
+- [NestJS 핵심 개념과 Post CRUD API 구현](https://github.com/yoonc01/next-nest/pull/3) - IoC, 의존성 주입, NestJS 아키텍처 구조
+
 ---
 
 ## 프로젝트 구조
