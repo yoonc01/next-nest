@@ -1,0 +1,60 @@
+### NestJS Post API 테스트
+
+@baseUrl = http://localhost:3000
+
+### 1. 모든 포스트 조회
+GET {{baseUrl}}/posts
+
+### 2. 포스트 생성 - 첫 번째
+POST {{baseUrl}}/posts
+Content-Type: application/json
+
+{
+  "title": "NestJS 시작하기",
+  "content": "NestJS는 Node.js 프레임워크입니다!",
+  "authorId": 1
+}
+
+### 3. 포스트 생성 - 두 번째
+POST {{baseUrl}}/posts
+Content-Type: application/json
+
+{
+  "title": "TypeScript 배우기",
+  "content": "타입스크립트는 필수 기술입니다!",
+  "authorId": 2
+}
+
+### 4. 특정 포스트 조회 (ID: 1)
+GET {{baseUrl}}/posts/1
+
+### 5. 포스트 수정
+PUT {{baseUrl}}/posts/1
+Content-Type: application/json
+
+{
+  "title": "NestJS 완벽 가이드",
+  "content": "수정된 내용입니다"
+}
+
+### 6. 포스트 삭제
+DELETE {{baseUrl}}/posts/1
+
+### 7. 유효성 검사 테스트 - title 누락 (실패해야 함)
+POST {{baseUrl}}/posts
+Content-Type: application/json
+
+{
+  "content": "제목이 없습니다",
+  "authorId": 1
+}
+
+### 8. 유효성 검사 테스트 - authorId가 문자열 (실패해야 함)
+POST {{baseUrl}}/posts
+Content-Type: application/json
+
+{
+  "title": "제목",
+  "content": "내용",
+  "authorId": "문자열"
+}
