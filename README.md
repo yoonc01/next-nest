@@ -41,6 +41,31 @@ pnpm dev:api          # NestJS만 실행
 pnpm build
 ```
 
+### Backend 준비 절차
+
+1. **필수 도구**  
+   - Node.js LTS (20.x)  
+   - pnpm 10+  
+   - Docker & Docker Compose
+
+2. **환경 변수**  
+   - `cd apps/api && cp .env.example .env`로 예제 파일을 복사한 뒤, 필요하면 값을 수정하세요.
+
+3. **PostgreSQL 컨테이너 실행**  
+   ```bash
+   cd apps/api
+   docker compose up -d        # 최초 실행
+   # 문제가 생기면 docker compose down -v 로 볼륨 포함 정리
+   ```
+
+4. **Prisma 스크립트**  
+   루트에서 실행하면 `apps/api` 패키지에 한정되어 동작합니다.
+   ```bash
+   pnpm api:prisma:migrate     # prisma migrate dev
+   pnpm api:prisma:generate    # prisma generate
+   pnpm api:prisma:studio      # prisma studio
+   ```
+
 ## 기술 스택
 
 - **패키지 매니저**: pnpm (workspace)
