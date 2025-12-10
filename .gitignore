@@ -52,3 +52,6 @@ Thumbs.db
 
 # Turbo
 .turbo
+
+# Prisma generated clients
+apps/api/generated/
