@@ -10,6 +10,7 @@ pnpm 워크스페이스를 사용한 Next.js + NestJS 모노레포 프로젝트�
 - [Server Actions vs API Routes 완벽 가이드](https://github.com/yoonc01/next-nest/pull/2) - RPC vs REST, Progressive Enhancement, Form의 가치, 선택 기준
 
 - [NestJS 핵심 개념과 Post CRUD API 구현](https://github.com/yoonc01/next-nest/pull/3) - IoC, 의존성 주입, NestJS 아키텍처 구조
+- [모노레포에서 Nest API + Prisma + Docker 환경 세팅](https://github.com/yoonc01/next-nest/pull/4) - pnpm workspace, Prisma config, Docker Postgres 트러블슈팅
 
 ---
 
