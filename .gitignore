@@ -2,6 +2,7 @@
 node_modules
 .pnp
 .pnp.js
+.pnp.*
 
 # Testing
 coverage
@@ -55,3 +56,9 @@ Thumbs.db
 
 # Prisma generated clients
 apps/api/generated/
+
+# Vercel
+.vercel
+
+# Certificates
+*.pem
