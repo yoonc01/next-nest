@@ -12,6 +12,7 @@ pnpm 워크스페이스를 사용한 Next.js + NestJS 모노레포 프로젝트�
 - [NestJS 핵심 개념과 Post CRUD API 구현](https://github.com/yoonc01/next-nest/pull/3) - IoC, 의존성 주입, NestJS 아키텍처 구조
 - [모노레포에서 Nest API + Prisma + Docker 환경 세팅](https://github.com/yoonc01/next-nest/pull/4) - pnpm workspace, Prisma config, Docker Postgres 트러블슈팅
 - [React Query & Jotai 이해와 웹 앱 구조 정비](https://github.com/yoonc01/next-nest/pull/5) - 서버 상태 관리/전역 상태 도구의 등장 배경, Next 웹 앱 .gitignore·tsconfig 리팩터링, shadcn CLI 사용법 정리
+- [NextAuth + Prisma 인증 환경 구축](https://github.com/yoonc01/next-nest/pull/7) - NextAuth v5 구조, Prisma Adapter, 미들웨어/Edge 런타임 제약 정리
 
 ---
 
