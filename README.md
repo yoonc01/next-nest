@@ -36,9 +36,9 @@ next-nest/
 pnpm install
 
 # 개발 서버 실행
-pnpm dev              # 모든 앱 동시 실행
-pnpm dev:web          # Next.js만 실행
-pnpm dev:api          # NestJS만 실행
+pnpm dev              # 모든 앱 동시 실행 (web:4001, api:4000)
+pnpm dev:web          # Next.js만 실행 (http://localhost:4001)
+pnpm dev:api          # NestJS만 실행 (http://localhost:4000, PORT로 변경 가능)
 
 # 빌드
 pnpm build
@@ -53,6 +53,7 @@ pnpm build
 
 2. **환경 변수**  
    - `cd apps/api && cp .env.example .env`로 예제 파일을 복사한 뒤, 필요하면 값을 수정하세요.
+   - `PORT` 값을 지정하면 Nest API가 사용할 포트를 덮어쓸 수 있습니다. 기본값은 `4000`입니다.
 
 3. **PostgreSQL 컨테이너 실행**  
    ```bash
