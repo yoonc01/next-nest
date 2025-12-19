@@ -35,6 +35,7 @@ lerna-debug.log*
 Thumbs.db
 
 # IDE
+!.vscode/settings.json
 .vscode
 .idea
 *.swp
