@@ -16,6 +16,7 @@ pnpm 워크스페이스를 사용한 Next.js + NestJS 모노레포 프로젝트�
 - [Dev 포트 전략과 Edge/Proxy/NextAuth 심화 노트](https://github.com/yoonc01/next-nest/pull/8) - 웹·API 포트 고정, Next.js proxy 네이밍 전환, trustHost/useSecureCookies 옵션, Edge/프록시·배포 구조, bcryptjs 기반 비밀번호 처리 흐름 정리
 - [Next.js App Router & FormData/NextAuth 브레인 덤프](https://github.com/yoonc01/next-nest/pull/9) - Route Group, default export, Form 이벤트/`preventDefault`, FormData 내부 구조·직렬화·버퍼 개념, Docker/Nest + NextAuth 흐름 정리
 - [NestJS JWT Guard 추가](https://github.com/yoonc01/next-nest/pull/10) - JWT 구조/검증, base64url/UTF-8 개념, access/refresh 토큰과 세션/refresh 전략 비교
+- [NextAuth 쿠키 인증 + Nest Bearer 연동](https://github.com/yoonc01/next-nest/pull/11) - cookies-next, 서버 액션으로 쿠키 추출, Authorization/Content-Type 역할, 401/204 처리 포인트 정리
 
 ---
 
