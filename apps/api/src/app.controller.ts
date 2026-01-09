@@ -4,6 +4,8 @@ import { AccessTokenGuard } from "./auth/guards/access-token.guard";
 import { Request } from "express";
 import { ApiBearerAuth } from "@nestjs/swagger";
 
+type RequestWithUser = Request & { user: Express.User };
+
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
@@ -16,7 +18,7 @@ export class AppController {
   @Get("/user-test")
   @UseGuards(AccessTokenGuard)
   @ApiBearerAuth("access-token")
-  testUser(@Req() req: Request) {
-    return `user email : ${req.user?.email}`;
+  testUser(@Req() req: RequestWithUser) {
+    return `user email : ${req.user.email}`;
   }
 }
