@@ -7,10 +7,15 @@ import { UpdateCourseDto } from "./dto/update-course.dto";
 @Injectable()
 export class CoursesService {
   constructor(private prisma: PrismaService) {}
+
   async create(userId: string, createCourseDto: CreateCourseDto): Promise<Course> {
+    const { categoryIds, ...otherData } = createCourseDto;
     return this.prisma.course.create({
       data: {
-        ...createCourseDto,
+        ...otherData,
+        category: {
+          connect: categoryIds?.map(id => ({ id })),
+        },
         instructorId: userId,
       },
     });
