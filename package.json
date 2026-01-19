@@ -7,6 +7,7 @@
     "dev": "pnpm -r --parallel run dev",
     "dev:web": "pnpm --filter web run dev",
     "dev:api": "pnpm --filter api run start:dev",
+    "api:db:push": "pnpm --filter api run db:push",
     "api:db:up": "docker compose -f apps/api/docker-compose.yml up -d",
     "api:db:down": "docker compose -f apps/api/docker-compose.yml down",
     "api:prisma:generate": "pnpm --filter api run prisma:generate",
