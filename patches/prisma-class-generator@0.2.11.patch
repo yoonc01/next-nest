@@ -1,0 +1,25 @@
+diff --git a/dist/convertor.js b/dist/convertor.js
+index 2d78d2eb5ffc856a8b744f97e20afc7829544383..3fcb06495f66515410862dde0038ad92595f53c5 100755
+--- a/dist/convertor.js
++++ b/dist/convertor.js
+@@ -210,9 +210,6 @@ class PrismaConvertor {
+             if (dmmfField.isRequired === false) {
+                 field.nullable = true;
+             }
+-            if (this.config.useNonNullableAssertions) {
+-                field.nonNullableAssertion = true;
+-            }
+             if (this.config.preserveDefaultNullable) {
+                 field.preserveDefaultNullable = true;
+             }
+@@ -240,6 +237,10 @@ class PrismaConvertor {
+                     }
+                 }
+             }
++            const hasInitializer = Boolean(field.default) || this._config.useUndefinedDefault === true;
++            if (this.config.useNonNullableAssertions && !hasInitializer) {
++                field.nonNullableAssertion = true;
++            }
+             if (type) {
+                 field.type = type;
+             }

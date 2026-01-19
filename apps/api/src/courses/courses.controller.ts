@@ -12,12 +12,13 @@ import {
   UseGuards,
 } from "@nestjs/common";
 import { CoursesService } from "./courses.service";
-import { ApiBearerAuth, ApiQuery, ApiTags } from "@nestjs/swagger";
+import { ApiBearerAuth, ApiOkResponse, ApiQuery, ApiTags } from "@nestjs/swagger";
 import { AccessTokenGuard } from "src/auth/guards/access-token.guard";
 import { CreateCourseDto } from "./dto/create-course.dto";
 import { Request } from "express";
 import { Prisma } from "@prisma/client";
 import { UpdateCourseDto } from "./dto/update-course.dto";
+import { Course as CourseEntity } from "src/_gen/prisma-class/course";
 
 type RequestWithUser = Request & { user: Express.User };
 
@@ -80,6 +81,7 @@ export class CoursesController {
     required: false,
     description: "sections, lectures, courseReviews 등 포함할 관계 지정",
   })
+  @ApiOkResponse({ description: " 코스 상세 정보", type: CourseEntity })
   findOne(@Param("id", ParseUUIDPipe) id: string, @Query("include") include?: string) {
     const includeArray = include ? include.split(",") : undefined;
 

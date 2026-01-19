@@ -1,3 +1,6 @@
 packages:
-  - "apps/*"
-  - "packages/*"
+  - apps/*
+  - packages/*
+
+patchedDependencies:
+  prisma-class-generator@0.2.11: patches/prisma-class-generator@0.2.11.patch
