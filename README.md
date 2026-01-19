@@ -19,6 +19,7 @@ pnpm 워크스페이스를 사용한 Next.js + NestJS 모노레포 프로젝트�
 - [NextAuth 쿠키 인증 + Nest Bearer 연동](https://github.com/yoonc01/next-nest/pull/11) - cookies-next, 서버 액션으로 쿠키 추출, Authorization/Content-Type 역할, 401/204 처리 포인트 정리
 - [Prisma 모델링 + UUID/CUID 개념 정리](https://github.com/yoonc01/next-nest/pull/12) - Prisma format 스크립트, @map/@@map/@relation, fields/references, cascade/복합 유니크, uuid/cuid 전략 정리
 - [NestJS API 개발 메모 – Prisma/DTO/Request 타입 정리](https://github.com/yoonc01/next-nest/pull/14) - Nest CLI in pnpm monorepo, PrismaModule/Service 역할, resource 생성 의미, DTO validation/PartialType, req.user 타입 처리, strictPropertyInitialization 대응
+- [Prisma Class Generator & pnpm patch 정리](https://github.com/yoonc01/next-nest/pull/16) - prisma-class-generator 목적, strictPropertyInitialization 대응, @default+! 충돌 해결, pnpm patch 워크플로 정리
 
 ---
 
