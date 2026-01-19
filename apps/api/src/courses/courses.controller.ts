@@ -30,6 +30,10 @@ export class CoursesController {
   @Post()
   @UseGuards(AccessTokenGuard)
   @ApiBearerAuth("access-token")
+  @ApiOkResponse({
+    description: "코스 생성",
+    type: CourseEntity,
+  })
   create(@Req() req: RequestWithUser, @Body() createCourseDto: CreateCourseDto) {
     return this.coursesService.create(req.user.sub, createCourseDto);
   }
@@ -40,6 +44,11 @@ export class CoursesController {
   @ApiQuery({ name: "categoryId", required: false })
   @ApiQuery({ name: "skip", required: false })
   @ApiQuery({ name: "take", required: false })
+  @ApiOkResponse({
+    description: "코스 목록",
+    type: CourseEntity,
+    isArray: true,
+  })
   findAll(
     @Query("title") title?: string,
     @Query("level") level?: string,
@@ -58,7 +67,7 @@ export class CoursesController {
     }
 
     if (categoryId) {
-      where.category = {
+      where.categories = {
         some: {
           id: categoryId,
         },
@@ -91,6 +100,10 @@ export class CoursesController {
   @Patch(":id")
   @UseGuards(AccessTokenGuard)
   @ApiBearerAuth("access-token")
+  @ApiOkResponse({
+    description: "코스 수정",
+    type: CourseEntity,
+  })
   update(
     @Param("id", ParseUUIDPipe) id: string,
     @Req() req: RequestWithUser,
@@ -102,6 +115,10 @@ export class CoursesController {
   @Delete(":id")
   @UseGuards(AccessTokenGuard)
   @ApiBearerAuth("access-token")
+  @ApiOkResponse({
+    description: "코스 삭제",
+    type: CourseEntity,
+  })
   delete(@Param("id", ParseUUIDPipe) id: string, @Req() req: RequestWithUser) {
     return this.coursesService.delete(id, req.user.sub);
   }

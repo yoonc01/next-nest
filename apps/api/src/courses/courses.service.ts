@@ -13,7 +13,7 @@ export class CoursesService {
     return this.prisma.course.create({
       data: {
         ...otherData,
-        category: {
+        categories: {
           connect: categoryIds?.map(id => ({ id })),
         },
         instructorId: userId,
@@ -84,8 +84,10 @@ export class CoursesService {
       throw new UnauthorizedException("강의의 소유자만 수정할 수 있습니다.");
     }
 
-    return this.prisma.course.delete({
+    await this.prisma.course.delete({
       where: { id },
     });
+
+    return course;
   }
 }
