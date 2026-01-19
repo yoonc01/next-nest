@@ -3,20 +3,19 @@ import { PrismaService } from "src/prisma/prisma.service";
 import { Course, Prisma } from "@prisma/client";
 import { CreateCourseDto } from "./dto/create-course.dto";
 import { UpdateCourseDto } from "./dto/update-course.dto";
+import slugfy from "slug";
 
 @Injectable()
 export class CoursesService {
   constructor(private prisma: PrismaService) {}
 
   async create(userId: string, createCourseDto: CreateCourseDto): Promise<Course> {
-    const { categoryIds, ...otherData } = createCourseDto;
     return this.prisma.course.create({
       data: {
-        ...otherData,
-        categories: {
-          connect: categoryIds?.map(id => ({ id })),
-        },
+        title: createCourseDto.title,
+        slug: slugfy(createCourseDto.title),
         instructorId: userId,
+        status: "DRAFT",
       },
     });
   }
@@ -62,13 +61,25 @@ export class CoursesService {
     if (!course) {
       throw new NotFoundException(`ID: ${id} 코스를 찾을 수 없습니다.`);
     }
+
+    const { categoryIds, ...otherData } = UpdateCourseDto;
+    const data: Prisma.CourseUpdateInput = {
+      ...otherData,
+    };
+
     if (course.instructorId !== userId) {
       throw new UnauthorizedException("강의의 소유자만 수정할 수 있습니다.");
     }
 
+    if (categoryIds && categoryIds.length > 0) {
+      data.categories = {
+        connect: categoryIds.map(id => ({ id })),
+      };
+    }
+
     return this.prisma.course.update({
       where: { id },
-      data: UpdateCourseDto,
+      data,
     });
   }
 
