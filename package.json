@@ -15,6 +15,7 @@
     "api:prisma:studio": "pnpm --filter api run prisma:studio",
     "api:prisma:seed": "pnpm --filter api run prisma:seed",
     "api:prisma:format": "pnpm --filter api exec prisma format",
+    "web:openapi-ts": "pnpm --filter web run openapi-ts",
     "web:prisma:format": "pnpm --filter web exec prisma format",
     "prisma:format": "pnpm --filter api exec prisma format && pnpm --filter web exec prisma format",
     "build": "pnpm -r run build",

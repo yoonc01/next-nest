@@ -3,7 +3,7 @@ import { PrismaService } from "src/prisma/prisma.service";
 import { Course, Prisma } from "@prisma/client";
 import { CreateCourseDto } from "./dto/create-course.dto";
 import { UpdateCourseDto } from "./dto/update-course.dto";
-import slugfy from "slug";
+import slugfy from "slugify";
 
 @Injectable()
 export class CoursesService {

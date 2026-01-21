@@ -2,7 +2,8 @@ import { Controller, Get, Req, UseGuards } from "@nestjs/common";
 import { AppService } from "./app.service";
 import { AccessTokenGuard } from "./auth/guards/access-token.guard";
 import { Request } from "express";
-import { ApiBearerAuth } from "@nestjs/swagger";
+import { ApiBearerAuth, ApiOkResponse } from "@nestjs/swagger";
+import { UserTestResponseDto } from "./app/dto/user-test-response.dto";
 
 type RequestWithUser = Request & { user: Express.User };
 
@@ -18,7 +19,8 @@ export class AppController {
   @Get("/user-test")
   @UseGuards(AccessTokenGuard)
   @ApiBearerAuth("access-token")
-  testUser(@Req() req: RequestWithUser) {
-    return `user email : ${req.user.email}`;
+  @ApiOkResponse({ type: UserTestResponseDto })
+  testUser(@Req() req: RequestWithUser): UserTestResponseDto {
+    return { message: `user email : ${req.user.email}` };
   }
 }

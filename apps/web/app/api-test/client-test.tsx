@@ -15,11 +15,13 @@ export default function ClientTest() {
     return <div>loading</div>;
   }
 
+  const message = data?.data?.message ?? "";
+
   return (
     <div>
       <h1>API test</h1>
       <h2>server component API test result</h2>
-      <pre>{data}</pre>
+      <pre>{message}</pre>
     </div>
   );
 }
