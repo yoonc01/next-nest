@@ -66,6 +66,8 @@
     "zod": "^4.1.13"
   },
   "devDependencies": {
+    "@hey-api/client-next": "^0.5.1",
+    "@hey-api/openapi-ts": "^0.90.6",
     "@tailwindcss/postcss": "^4",
     "@types/bcryptjs": "^3.0.0",
     "@types/jsonwebtoken": "^9.0.10",
