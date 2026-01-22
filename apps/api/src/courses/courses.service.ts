@@ -3,11 +3,16 @@ import { PrismaService } from "src/prisma/prisma.service";
 import { Course, Prisma } from "@prisma/client";
 import { CreateCourseDto } from "./dto/create-course.dto";
 import { UpdateCourseDto } from "./dto/update-course.dto";
+import { SectionsService } from "src/sections/sections.service";
+import { CreateSectionDto } from "src/sections/dto/create-section.dto";
 import slugfy from "slugify";
 
 @Injectable()
 export class CoursesService {
-  constructor(private prisma: PrismaService) {}
+  constructor(
+    private prisma: PrismaService,
+    private readonly sectionsService: SectionsService,
+  ) {}
 
   async create(userId: string, createCourseDto: CreateCourseDto): Promise<Course> {
     return this.prisma.course.create({
@@ -18,6 +23,10 @@ export class CoursesService {
         status: "DRAFT",
       },
     });
+  }
+
+  async createSection(courseId: string, createSectionDto: CreateSectionDto, userId: string) {
+    return this.sectionsService.create(courseId, createSectionDto, userId);
   }
 
   async findAll(params: {
