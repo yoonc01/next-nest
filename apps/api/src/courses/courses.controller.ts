@@ -12,13 +12,23 @@ import {
   UseGuards,
 } from "@nestjs/common";
 import { CoursesService } from "./courses.service";
-import { ApiBearerAuth, ApiOkResponse, ApiQuery, ApiTags } from "@nestjs/swagger";
+import {
+  ApiBearerAuth,
+  ApiBody,
+  ApiOkResponse,
+  ApiOperation,
+  ApiParam,
+  ApiQuery,
+  ApiTags,
+} from "@nestjs/swagger";
 import { AccessTokenGuard } from "src/auth/guards/access-token.guard";
 import { CreateCourseDto } from "./dto/create-course.dto";
+import { CreateSectionDto } from "src/sections/dto/create-section.dto";
 import { Request } from "express";
 import { Prisma } from "@prisma/client";
 import { UpdateCourseDto } from "./dto/update-course.dto";
 import { Course as CourseEntity } from "src/_gen/prisma-class/course";
+import { Section as SectionEntity } from "src/_gen/prisma-class/section";
 
 type RequestWithUser = Request & { user: Express.User };
 
@@ -36,6 +46,24 @@ export class CoursesController {
   })
   create(@Req() req: RequestWithUser, @Body() createCourseDto: CreateCourseDto) {
     return this.coursesService.create(req.user.sub, createCourseDto);
+  }
+
+  @Post(":courseId/sections")
+  @UseGuards(AccessTokenGuard)
+  @ApiBearerAuth("access-token")
+  @ApiOperation({ summary: "새 섹션 생성" })
+  @ApiParam({ name: "courseId", description: "코스 ID" })
+  @ApiBody({ type: CreateSectionDto })
+  @ApiOkResponse({
+    description: "섹션 생성",
+    type: SectionEntity,
+  })
+  createSection(
+    @Param("courseId") courseId: string,
+    @Body() createSectionDto: CreateSectionDto,
+    @Req() req: RequestWithUser,
+  ) {
+    return this.coursesService.createSection(courseId, createSectionDto, req.user.sub);
   }
 
   @Get()
