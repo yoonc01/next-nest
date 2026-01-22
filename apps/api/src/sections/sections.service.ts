@@ -2,10 +2,15 @@ import { Injectable, NotFoundException, UnauthorizedException } from "@nestjs/co
 import { PrismaService } from "src/prisma/prisma.service";
 import { CreateSectionDto } from "./dto/create-section.dto";
 import { UpdateSectionDto } from "./dto/update-section.dto";
+import { CreateLectureDto } from "src/lectures/dto/create-lecture.dto";
+import { LecturesService } from "src/lectures/lectures.service";
 
 @Injectable()
 export class SectionsService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly lecturesService: LecturesService,
+  ) {}
 
   async create(courseId: string, createSectionDto: CreateSectionDto, userId: string) {
     const course = await this.prisma.course.findUnique({
@@ -39,6 +44,10 @@ export class SectionsService {
         },
       },
     });
+  }
+
+  async createLecture(sectionId: string, createLectureDto: CreateLectureDto, userId: string) {
+    return this.lecturesService.create(sectionId, createLectureDto, userId);
   }
 
   async findOne(sectionId: string, userId: string) {

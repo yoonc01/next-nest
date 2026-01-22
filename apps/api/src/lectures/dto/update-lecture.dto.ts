@@ -1,9 +1,7 @@
 import { ApiProperty, PartialType } from "@nestjs/swagger";
+import { Prisma } from "@prisma/client";
 import { IsBoolean, IsNumber, IsObject, IsOptional, IsString } from "class-validator";
 import { CreateLectureDto } from "./create-lecture.dto";
-
-type JsonPrimitive = string | number | boolean | null;
-export type JsonValue = JsonPrimitive | JsonValue[] | { [key: string]: JsonValue };
 
 export class UpdateLectureDto extends PartialType(CreateLectureDto) {
   @ApiProperty({ description: "개별 강의 설명", required: false })
@@ -29,5 +27,5 @@ export class UpdateLectureDto extends PartialType(CreateLectureDto) {
   @ApiProperty({ description: "개별 강의 비디오 업로드 정보", required: false })
   @IsObject()
   @IsOptional()
-  videoStorageInfo?: JsonValue;
+  videoStorageInfo?: Prisma.InputJsonValue;
 }
